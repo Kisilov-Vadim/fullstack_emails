@@ -9,14 +9,21 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.ts"
+    "start": "node index.ts",
+    "dev": "nodemon index.ts",
+    "deploy": "git push heroku master"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.7.21"
+    "@types/node": "^18.7.21",
+    "@types/passport-google-oauth20": "^2.0.11",
+    "nodemon": "^2.0.20"
   }
 }

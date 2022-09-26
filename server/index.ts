@@ -1,11 +1,17 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
-const {PORT} = require('./constants.ts');
+const {PORT} = require('./constants');
+const {mongoURI} = require('./config/keys');
+const authRoutes = require('./routes/auth');
+
+require('./models/User');
+require('./services/passport');
+
+mongoose.connect(mongoURI);
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send({hi: 'there'})
-})
+authRoutes(app);
 
 app.listen(PORT);
