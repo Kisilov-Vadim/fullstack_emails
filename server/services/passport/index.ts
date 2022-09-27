@@ -1,16 +1,13 @@
-const passport = require('passport');
-const {Strategy: GoogleStrategy} = require('passport-google-oauth20');
+import passport from 'passport';
+import {Strategy as GoogleStrategy} from 'passport-google-oauth20';
 
-const {
-  googleClientID,
-  googleClientSecret
-} = require('../../config/keys');
+import keys from '../../config/keys';
 
-const {
+import {
   passportCallback,
   serializeUser,
   deserializeUser,
-} = require('./utils');
+} from './utils';
 
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
@@ -18,12 +15,11 @@ passport.deserializeUser(deserializeUser);
 passport.use(
   new GoogleStrategy(
     {
-      clientID: googleClientID,
-      clientSecret: googleClientSecret,
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
+      proxy: true,
     },
     passportCallback,
   )
 );
-
-export {};

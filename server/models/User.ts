@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const {Schema} = mongoose;
 
@@ -7,5 +7,3 @@ const userSchema = new Schema({
 })
 
 mongoose.model('users', userSchema);
-
-export {};

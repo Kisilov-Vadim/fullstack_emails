@@ -1,22 +1,22 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
-const passport = require('passport');
+import express, {Express} from 'express';
+import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
+import passport from 'passport';
 
-const {PORT, COOKIE_SESSION_MAX_AGE} = require('./constants');
-const {mongoURI, cookieKey} = require('./config/keys');
-const authRoutes = require('./routes/auth');
+import keys from './config/keys';
+import {PORT, COOKIE_SESSION_MAX_AGE} from './constants';
+import authRoutes from './routes/auth';
 
-require('./models/User');
-require('./services/passport');
+import './models/User';
+import './services/passport';
 
-mongoose.connect(mongoURI);
+mongoose.connect(keys.mongoURI);
 
-const app = express();
+const app: Express = express();
 
 app.use(cookieSession({
   maxAge: COOKIE_SESSION_MAX_AGE,
-  keys: [cookieKey],
+  keys: [keys.cookieKey],
 }))
 
 app.use(passport.initialize());
@@ -25,5 +25,3 @@ app.use(passport.session());
 authRoutes(app);
 
 app.listen(PORT);
-
-export {};

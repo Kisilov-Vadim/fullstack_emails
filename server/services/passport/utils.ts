@@ -1,5 +1,5 @@
 import {Profile, VerifyCallback} from "passport-google-oauth20";
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const User = mongoose.model('users');
 
@@ -20,14 +20,14 @@ const passportCallback = async (
   done(null, dbUser);
 }
 
-const serializeUser = (user, done) => done(null, user.id);
+const serializeUser = (user: any, done: any) => done(null, user.id);
 
-const deserializeUser = async (id, done) => {
+const deserializeUser = async (id: any, done: any) => {
   const dbUser = await User.findById(id);
   done(null, dbUser);
 };
 
-module.exports = {
+export {
   passportCallback,
   serializeUser,
   deserializeUser,
