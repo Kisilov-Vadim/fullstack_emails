@@ -9,8 +9,10 @@ export interface AuthState {
 export type User = {
   id: string;
   googleId: string;
+  credits: number;
 };
 
 export enum AuthThunkTypePrefixes {
   userFetch = 'user/fetch',
+  stripeToken = 'user/stripe-token',
 }

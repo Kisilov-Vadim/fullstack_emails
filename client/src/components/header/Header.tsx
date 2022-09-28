@@ -1,28 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {User} from '../store/auth/type';
-import {selectAuthUser} from '../store/auth';
-import {useAppSelector} from '../hooks/useAppSelector';
+import {selectAuthUser} from '../../store/auth';
+import {useAppSelector} from '../../hooks/useAppSelector';
 
-type RightSideContentProps = {
-  user?: User;
-};
-const RightSideContent = ({user}: RightSideContentProps) => {
-  if (user) {
-    return (
-      <li>
-        <a href="/api/logout">Logout</a>
-      </li>
-    );
-  }
-
-  return (
-    <li>
-      <a href="/auth/google">Login With Google</a>
-    </li>
-  );
-};
+import RightSideContent from './RightSideContent';
 
 export const Header = () => {
   const user = useAppSelector(selectAuthUser);

@@ -1,2 +1,3 @@
-export * from './Header';
+export * from './header';
 export * from './Landing';
+export * from './Payments';

@@ -3,7 +3,7 @@ import {RootState} from '..';
 
 import {StoreReducers} from '../types';
 
-import {fetchUser} from './actions';
+import {fetchUser, handleStripeToken} from './actions';
 import {AuthState} from './type';
 
 const initialState: AuthState = {
@@ -28,13 +28,20 @@ const authSlice = createSlice({
       state.error = error;
       state.isLoading = false;
     });
+    builder.addCase(handleStripeToken.fulfilled, (state, {payload}) => {
+      state.user = payload;
+    });
   },
 });
 
 export const selectAuthUser = (state: RootState) => state.auth.user;
 export const selectAuthState = (state: RootState) => state.auth;
 
-const authActions = {...authSlice.actions, fetchUser};
 const authReducer = authSlice.reducer;
+const authActions = {
+  ...authSlice.actions,
+  fetchUser,
+  handleStripeToken,
+};
 
 export {authActions, authReducer};
