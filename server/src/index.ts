@@ -14,10 +14,12 @@ mongoose.connect(keys.mongoURI);
 
 const app: Express = express();
 
-app.use(cookieSession({
-  maxAge: COOKIE_SESSION_MAX_AGE,
-  keys: [keys.cookieKey],
-}))
+app.use(
+  cookieSession({
+    maxAge: COOKIE_SESSION_MAX_AGE,
+    keys: [keys.cookieKey],
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

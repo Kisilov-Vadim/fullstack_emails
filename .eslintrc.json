@@ -28,10 +28,13 @@
         "class-methods-use-this": "off",
         "no-shadow": "off",
         "consistent-return": "off",
+        "no-param-reassign": "off",
+        "no-return-await": "off",
 
         // typescript-eslint
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-empty-function": "off",
 
         // react
         "react/function-component-definition": [2, {
