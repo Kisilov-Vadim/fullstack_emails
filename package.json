@@ -19,6 +19,9 @@
     "url": "https://github.com/Kisilov-Vadim/fullstack_emails/issues"
   },
   "homepage": "https://github.com/Kisilov-Vadim/fullstack_emails#readme",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  },
   "dev-dependencies": {
     "concurrently": "^7.4.0"
   }
