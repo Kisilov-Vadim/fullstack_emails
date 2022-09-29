@@ -105,5 +105,5 @@
       "module": "CommonJS"
     }
   },
-  "exclude": ["src/config"]
+  "exclude": ["server/config"]
 }

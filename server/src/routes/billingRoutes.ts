@@ -2,7 +2,7 @@
 import {Express} from 'express';
 import Stripe from 'stripe';
 
-import {requireLogin} from '../../middlewares';
+import {requireLogin} from '../middlewares';
 
 import keys from '../config/keys';
 

@@ -1,0 +1,49 @@
+{
+    "extends": [
+        "airbnb",
+        "prettier",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "unused-imports",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "no-restricted-exports": "off",
+        "no-console": ["warn", {"allow": ["warn", "error"]}],
+        "no-process-exit": "off",
+        "object-shorthand": "off",
+        "no-use-before-define": "off",
+        "global-require": "off",
+        "lines-between-class-members": "off",
+        "class-methods-use-this": "off",
+        "no-shadow": "off",
+        "consistent-return": "off",
+        "no-param-reassign": "off",
+        "no-return-await": "off",
+
+        // typescript-eslint
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-var-requires": "off",
+
+        // unused-imports
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+        "warn",
+        {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+        }
+        ]
+    }
+}

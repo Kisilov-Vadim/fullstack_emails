@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run start --prefix server",
     "client": "npm run start --prefix client",
     "server": "npm run dev --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -18,28 +19,7 @@
     "url": "https://github.com/Kisilov-Vadim/fullstack_emails/issues"
   },
   "homepage": "https://github.com/Kisilov-Vadim/fullstack_emails#readme",
-  "dependencies": {
+  "dev-dependencies": {
     "concurrently": "^7.4.0"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.17.0",
-    "@typescript-eslint/parser": "5.17.0",
-    "eslint": "8.12.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-node": "4.1.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.29.4",
-    "eslint-plugin-react-hooks": "4.4.0",
-    "eslint-plugin-unused-imports": "^2.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "client",
-      "server"
-    ]
   }
 }

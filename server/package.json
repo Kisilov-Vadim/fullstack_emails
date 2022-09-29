@@ -8,10 +8,9 @@
     "npm": "8.18.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "dev": "nodemon src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +31,21 @@
   },
   "devDependencies": {
     "@types/node": "^18.7.23",
+    "@typescript-eslint/eslint-plugin": "5.17.0",
+    "@typescript-eslint/parser": "5.17.0",
+    "eslint": "8.12.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-node": "4.1.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "nodemon": "^2.0.20"
+  },
+  "eslintConfig": {
+    "extends": [
+      "src"
+    ]
   }
 }
