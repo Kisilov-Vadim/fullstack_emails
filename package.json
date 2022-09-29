@@ -8,6 +8,7 @@
     "start": "npm run start --prefix server",
     "client": "npm run start --prefix client",
     "server": "npm run dev --prefix server",
+    "deploy": "git push heroku master",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {

@@ -9,7 +9,6 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "deploy": "git push heroku master",
     "dev": "nodemon src/index.ts"
   },
   "author": "",
