@@ -32,18 +32,6 @@
         // typescript-eslint
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-var-requires": "off",
-
-        // unused-imports
-        "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-        "warn",
-        {
-            "vars": "all",
-            "varsIgnorePattern": "^_",
-            "args": "after-used",
-            "argsIgnorePattern": "^_"
-        }
-        ]
+        "@typescript-eslint/no-var-requires": "off"
     }
 }

@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import express, {Express} from 'express';
+
+import {RoutesPaths} from './constants';
 
 export default (app: Express) => {
   if (process.env.NODE_ENV === 'production') {
@@ -7,7 +8,7 @@ export default (app: Express) => {
 
     app.use(express.static('../client/build'));
 
-    app.get('*', (req, res) => {
+    app.get(RoutesPaths.staticHtml, (req, res) => {
       res.sendFile(
         path.resolve(__dirname, '../../../client', 'build', 'index.html')
       );

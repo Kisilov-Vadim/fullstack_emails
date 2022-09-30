@@ -1,26 +1,28 @@
 import passport from 'passport';
 import {Express} from 'express';
 
+import {PassportAuthenticateStrategies, RoutesPaths} from './constants';
+
 export default (app: Express) => {
   app.get(
-    '/auth/google',
-    passport.authenticate('google', {
+    RoutesPaths.authGoogle,
+    passport.authenticate(PassportAuthenticateStrategies.google, {
       scope: ['profile', 'email'],
     })
   );
 
   app.get(
-    '/auth/google/callback',
-    passport.authenticate('google'),
+    RoutesPaths.authGoogleCallback,
+    passport.authenticate(PassportAuthenticateStrategies.google),
     (req, res) => res.redirect('/surveys')
   );
 
-  app.get('/api/logout', (req, res) => {
+  app.get(RoutesPaths.apiLogout, (req, res) => {
     req.logout({}, () => {});
     res.redirect('/');
   });
 
-  app.get('/api/current_user', (req, res) => {
+  app.get(RoutesPaths.apiCurrentUser, (req, res) => {
     res.send(req.user);
   });
 };
