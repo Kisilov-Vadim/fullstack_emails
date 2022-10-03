@@ -15,4 +15,5 @@ export type User = {
 export enum AuthThunkTypePrefixes {
   userFetch = 'user/fetch',
   stripeToken = 'user/stripe-token',
+  sendSurvey = 'user/send-survey',
 }

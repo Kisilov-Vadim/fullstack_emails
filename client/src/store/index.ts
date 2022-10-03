@@ -1,12 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit';
 
 import {StoreReducers} from './types';
-
 import {authReducer} from './auth';
+import {reduxFormReducer} from './reduxForm';
 
 export const store = configureStore({
   reducer: {
     [StoreReducers.auth]: authReducer,
+    [StoreReducers.reduxForm]: reduxFormReducer,
   },
 });
 

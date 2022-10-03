@@ -1,5 +1,6 @@
 import {createAsyncThunk, SerializedError} from '@reduxjs/toolkit';
 import {Token} from 'react-stripe-checkout';
+import {SurveyFormData, surveyService} from '../../services';
 
 import {authService} from '../../services/auth';
 import {stripeService} from '../../services/stripe';
@@ -20,4 +21,12 @@ const handleStripeToken = createAsyncThunk<
   stripeService.handleToken(token)
 );
 
-export {fetchUser, handleStripeToken};
+const postSurvey = createAsyncThunk<
+  User,
+  SurveyFormData,
+  {rejectValue: SerializedError}
+>(AuthThunkTypePrefixes.sendSurvey, async (data) =>
+  surveyService.sendSurveys(data)
+);
+
+export {fetchUser, handleStripeToken, postSurvey};

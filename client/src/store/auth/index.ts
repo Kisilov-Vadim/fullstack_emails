@@ -3,7 +3,7 @@ import {RootState} from '..';
 
 import {StoreReducers} from '../types';
 
-import {fetchUser, handleStripeToken} from './actions';
+import {fetchUser, handleStripeToken, postSurvey} from './actions';
 import {AuthState} from './type';
 
 const initialState: AuthState = {
@@ -31,6 +31,9 @@ const authSlice = createSlice({
     builder.addCase(handleStripeToken.fulfilled, (state, {payload}) => {
       state.user = payload;
     });
+    builder.addCase(postSurvey.fulfilled, (state, {payload}) => {
+      state.user = payload;
+    });
   },
 });
 
@@ -42,6 +45,7 @@ const authActions = {
   ...authSlice.actions,
   fetchUser,
   handleStripeToken,
+  postSurvey,
 };
 
 export {authActions, authReducer};
