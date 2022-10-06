@@ -9,9 +9,12 @@ export type SurveyFormData = {
   recipients: string;
 };
 
+const getSurveys = async (): Promise<any> => requests.get('/api/surveys');
+
 const sendSurveys = async (data: SurveyFormData): Promise<User> =>
   requests.post('/api/surveys', {...data});
 
 export const surveyService = {
+  getSurveys,
   sendSurveys,
 };

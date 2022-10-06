@@ -9,10 +9,10 @@ export const surveyTemplate = (survey: any) => `
         <p>Please answer the following question</p>
         <p>${survey.body}</p>
         <div>
-          <a href="${keys.redirectDomain}${RoutesPaths.apiSurveysThanks}">Yes</a>
+          <a href="${keys.redirectDomain}${RoutesPaths.apiSurveys}/${survey.id}/yes">Yes</a>
         </div>
         <div>
-          <a href="${keys.redirectDomain}${RoutesPaths.apiSurveysThanks}">No</a>
+          <a href="${keys.redirectDomain}${RoutesPaths.apiSurveys}/${survey.id}/no">No</a>
         </div>
       </div>
     </body>

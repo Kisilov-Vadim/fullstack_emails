@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {Express} from 'express';
 import mongoose from 'mongoose';
+import {chain} from 'lodash';
+import {Path} from 'path-parser';
+import {URL} from 'url';
 
 import {sendMailer} from '../services';
 import {surveyTemplate} from '../services/emailTemplates';
@@ -11,8 +14,54 @@ import {RoutesPaths} from './constants';
 export default (app: Express) => {
   const Survey = mongoose.model('surveys');
 
-  app.get(RoutesPaths.apiSurveysThanks, (_, res) => {
-    res.send('Thanks for voting');
+  app.get(RoutesPaths.apiSurveys, requireLogin, async (req, res) => {
+    // @ts-ignore
+    const surveys = await Survey.find({_user: req.user.id}).select({
+      recipients: false,
+    });
+
+    res.send(surveys);
+  });
+
+  app.get(`${RoutesPaths.apiSurveys}/:surveyId/:choice`, (req, res) => {
+    res.send('Thanks for voting!');
+  });
+
+  app.post(RoutesPaths.apiSurveysWebhooks, (req, res) => {
+    const p = new Path(`${RoutesPaths.apiSurveys}/:surveyId/:choice`);
+
+    chain(req.body)
+      .map(({email, url}) => {
+        const match = p.test(new URL(url).pathname);
+
+        return match
+          ? {
+              email: email,
+              surveyId: match.surveyId,
+              choice: match.choice,
+            }
+          : undefined;
+      })
+      .compact()
+      .uniqBy((v) => [v.email, v.surveyId].join())
+      .each(({surveyId, email, choice}) => {
+        Survey.updateOne(
+          {
+            _id: surveyId,
+            recipients: {
+              $elemMatch: {email, responded: false},
+            },
+          },
+          {
+            $inc: {[choice]: 1},
+            $set: {'recipients.$.responded': true},
+            lastResponded: new Date(),
+          }
+        ).exec();
+      })
+      .value();
+
+    res.send({});
   });
 
   app.post(

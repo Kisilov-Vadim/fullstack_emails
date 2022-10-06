@@ -15,5 +15,5 @@ export enum RoutesPaths {
   apiCurrentUser = '/api/current_user',
   apiBillingStripe = '/api/stripe',
   apiSurveys = '/api/surveys',
-  apiSurveysThanks = '/api/surveys/thanks',
+  apiSurveysWebhooks = '/api/surveys/webhooks',
 }
