@@ -8,6 +8,6 @@ import surveyRoutes from './survey';
 export default (api: Express) => {
   authRoutes(api);
   billingRoutes(api);
-  staticRoutes(api);
   surveyRoutes(api);
+  staticRoutes(api);
 };
